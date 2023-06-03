@@ -14,28 +14,110 @@
 
 <body>
     <header>
-        <div class="addTarea">
-            <input type="text" placeholder="introduce una tarea" id="add">
-            <select name="clasificacion" id="urgencia">
-                <option value="ortion">Nivel de urgencia</option>
-                <option value="urgente">URGENTE</option>
-                <option value="diaria">Diaria</option>
-                <option value="mensual">Mensual</option>
-            </select>
-            <button id="btn">Añadir</button>
-
-        </div>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="./images/d585b6e855185a9e862151a62efedf1b.jpg" alt="Logo" width="30" height="24"
+                        class="d-inline-block align-text-top">
+                    <span>TODO's</span> <small> ©vanessa</small>
+                </a>
+            </div>
+        </nav>
     </header>
     <main>
+        <div class="container">
 
-        <div class="buscador">
-            <select name="clasificacion" id="urgencia">
-                <option value="ortion">Nivel de urgencia</option>
-                <option value="urgente">URGENTE</option>
-                <option value="diaria">Diaria</option>
-                <option value="mensual">Mensual</option>
-            </select>
-            <input type="text" placeholder="introduce nombre de la tarea" id="search">
+            <div class="añadir">
+                <div id="add" class="row g-3">
+                    <div class="uno col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGrid"
+                                placeholder="Introduce una tarea" value="Introduce una tarea">
+                            <label for="floatingInputGrid">Nombre de la tarea</label>
+                        </div>
+                    </div>
+                    <div class="uno col-md">
+                        <div class="form-floating">
+                            <select class="form-select" id="floatingSelectGrid">
+                                <option selected>Nivel de urgencia</option>
+                                <option value="urgente">URGENTE</option>
+                                <option value="diaria">Diaria</option>
+                                <option value="mensual">Mensual</option>
+                            </select>
+                            <label for="floatingSelectGrid">Selecciona una</label>
+
+                        </div>
+                    </div>
+                    <div class="dos col-12 ">
+                        <div class="form-floating ">
+                            <div class="d-grid mx-auto btn">
+                                <button type="button" class="btn btn-secondary btn-lg">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <hr class="border border-dark border-2 opacity-50">
+            <div class="buscar">
+                <div id="buscador" class="row g-3">
+                    <div class="uno col-md">
+                        <div class="form-floating">
+                            <select class="form-select" id="floatingSelectGrid">
+                                <option selected>Nivel de urgencia</option>
+                                <option value="urgente">URGENTE</option>
+                                <option value="diaria">Diaria</option>
+                                <option value="mensual">Mensual</option>
+                            </select>
+                            <label for="floatingSelectGrid">Selecciona una</label>
+                        </div>
+                    </div>
+                    <div class="uno col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGrid"
+                                placeholder="Introduce una tarea" value="Introduce una tarea">
+                            <label for="floatingInputGrid">Nombre de la tarea</label>
+                        </div>
+
+                    </div>
+                    <div class="dos col-12 ">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <section id="tareas">
+                <div class="card urgente">
+                    <div class="card-body">
+                        <p>Estudiar JavaScript.</p>
+                        <button type="button" class="btn btn-outline-danger">Eliminar</button>
+
+                    </div>
+
+                </div>
+                <div class="card diario">
+                    <div class="card-body">
+                        <p>Sacar al perrito</p>
+                        <button type="button" class="btn btn-outline-success">Eliminar</button>
+                    </div>
+
+                </div>
+                <div class="card mensual">
+                    <div class="card-body">
+                        <p>Hacer la compra</p>
+                        <button type="button" class="btn btn-outline-primary">Eliminar</button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
         </div>
     </main>
     <footer>
