@@ -12,18 +12,45 @@ body {
 
 
 /* fin fondos */
-/* inicio header */
-.navbar {
-    background-color: #e3f2fd
+/* añadir */
+.añadir {
+    margin-top: 20px;
 }
 
-/* fin header */
+/* fin añadir */
+
 /* inicio busqueda */
 .buscar {
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 /* fin busqueda */
+
+/* inicio tareas */
+.card {
+    margin: 4px auto;
+
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.urgente {
+    background-color: rgba(249, 117, 117, 0.649)
+}
+
+.diario {
+    background-color: #7af5d0bc;
+}
+
+.mensual {
+    background-color: #bf9cf6c5;
+}
+
+/* fin tareas */
 
 
 /*  */
