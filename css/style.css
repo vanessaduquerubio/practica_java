@@ -1,1 +1,28 @@
 /* modificacion de estilos de bootstrap */
+
+/* inicio  fondos */
+body {
+    background-image: url(../images/fondo-app-L-qWeW4B.jpeg);
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.719);
+}
+
+.buscar {
+    margin-top: 10px;
+}
+
+/* fin fondos */
+
+
+/* inicio media */
+@media(min-width:1004px) {
+    .uno {
+        width: 40%;
+    }
+
+    .dos {
+        width: 20%
+    }
+}
