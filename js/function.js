@@ -3,30 +3,14 @@
 //capturar elementos del dom
 
 const sectionTareas = document.querySelector('#tareas')
+const addTitulo = document.querySelector('#floatingInputGrid')
+const addPrioridad = document.querySelector('#floatingSelectGrid')
+const addButton = document.querySelector('#buttonadd')
+
+
 
 //funcion que pinte una tarea en el dom
-
-/* 
 function printOneTarea(pTarea, pDom) {
-    const divUrgencia = document.createElement('div');
-    divUrgencia.classList.add('card')
-    const divPintado = document.createElement('div')
-    divPintado.classList.add('card-body');
-    const pParrafo = document.createElement('p')
-    pParrafo.textContent = '${ pTarea.titulo }'
-    const button = document.createElement('button')
-    button.classList.add('btn, btn-outline-danger')
-    button.textContent = 'Eliminar'
-    divPintado.append(p, button)
-    divUrgencia.appendChild(divPintado)
-    sectionTareas.appendChild(divUrgencia)
-    pDom.appendChild(sectionTareas)
-    console.log(divUrgencia)
-}
-
-// imprimir todas las tareas que hay en el array de datos;/*  */
-
-function printOneTarea(pTarea, pDom, pList) {
     const divUrgencia = document.createElement('div');
     divUrgencia.classList.add('card')
     const divPintado = document.createElement('div')
@@ -36,7 +20,7 @@ function printOneTarea(pTarea, pDom, pList) {
     p.textContent = pTarea.titulo
     const button = document.createElement('button')
     button.classList.add('btn')
-    button.classList.add('btn-outline-')
+    button.classList.add('btn-outline-light')
     button.textContent = `Eliminar`
     divPintado.append(p, button)
     divUrgencia.append(divPintado)
@@ -45,13 +29,45 @@ function printOneTarea(pTarea, pDom, pList) {
 }
 
 function printAllTareas(pList, pDom) {
-    pList.forEach(tarea => printOneTarea(tarea, pDom, tareas));
+    pList.forEach(tarea => printOneTarea(tarea, pDom));
 }
 
 printAllTareas(tareas, sectionTareas);
 
-//añadir estilo por prioridad
+//fin printTareas
+
+function comprobarForm(pForm) {
+    return pForm.addTitulo.value !== "" && pForm.addPrioridad.value !== ""
+}
+console.log('comprobar form', comprobarForm)
+
+// guardar newTarea en tareas
+function saveTarea(pLista, pTarea) {
+    pLista.push(pTarea)
+    return 'usuario guardado'
+}
+console.log(tareas)
+// evento que pinta las nuevas tareas
+addButton.onclick = addTarea;
+let i = 1;
+function addTarea(event) {
+    {
+        const newTarea = {
+            idTarea: i++,
+            titulo: addTitulo.value,
+            prioridad: addPrioridad.value
+        }
+
+        let guardado = saveTarea(tareas, newTarea)
+        if (guardado === 'usuario guardado') {
+            addTitulo.value = ""
+            addPrioridad.value = ""
+            printOneTarea(newTarea, sectionTareas)
+        } else {
+            alert('los campos no pueden estar vacios')
+        }
 
 
-
+    }
+}
 
