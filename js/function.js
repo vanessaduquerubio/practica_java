@@ -35,6 +35,10 @@ function printOneTarea(pTarea, pDom) {
 }
 
 function printAllTareas(pList, pDom) {
+    searchPrioridad = '';
+    searchTarea = ''
+    addPrioridad = ''
+    addTarea = ''
     pList.forEach(tarea => printOneTarea(tarea, pDom));
 }
 
@@ -83,14 +87,17 @@ function addTarea(event) {
 //inicio Buscar tareas dinamicamente
 // funcion de filtro de prioridad
 
-function filterByPrioridad(pList, pPrioridad, pNombre) {
+function filterByPrioridad(pList, pPrioridad) {
     pList.forEach(tarea => {
-        if (tarea.prioridad === pPrioridad && tarea.titulo.toLowerCase() === pNombre.toLowerCase()) {
+        if (tarea.prioridad === pPrioridad) {
             printOneTarea(tarea, sectionTareas)
-            /*   } else if (tarea.titulo.toLowerCase() === pNombre.toLowerCase()) {
-                  printOneTarea(tarea, sectionTareas)
-              } else {
-                  /*    alert('No hay ninguna tarea con esas características') */
+        }
+    })
+}
+function filterByName(pList, pNombre) {
+    pList.forEach(tarea => {
+        if (tarea.titulo.toLowerCase() === pNombre.toLowerCase()) {
+            printOneTarea(tarea, sectionTareas)
         }
     })
 }
@@ -98,8 +105,16 @@ function filterByPrioridad(pList, pPrioridad, pNombre) {
 
 
 
-// funcion que al presionar enter filtre las tareas
-buttonSearch.onclick = sendSearch;
-function sendSearch() {
-    filterByPrioridad(tareas, searchPrioridad.value, searchTarea.value)
+// eventos de busqueda
+
+function changeSearch() {
+    filterByPrioridad(tareas, searchPrioridad.value)
+    searchPrioridad.value = ''
 }
+searchPrioridad.onclick = changeSearch;
+
+function sendSearch() {
+    filterByName(tareas, searchTarea.value)
+    searchTarea.value = ''
+}
+buttonSearch.onclick = sendSearch;
