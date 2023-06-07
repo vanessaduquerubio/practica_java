@@ -6,15 +6,15 @@ const tareas = [
         prioridad: 'urgente',
     }, {
         idTarea: 1,
-        titulo: 'Pasar',
+        titulo: 'Pasear',
         prioridad: 'diaria',
     }, {
         idTarea: 2,
-        titulo: 'Pasar IV',
+        titulo: 'jugar al basket',
         prioridad: 'mensual',
     }, {
         idTarea: 3,
-        titulo: 'Pas ITV',
+        titulo: 'Bailar',
         prioridad: 'urgente',
     }, {
         idTarea: 4,
@@ -22,17 +22,17 @@ const tareas = [
         prioridad: 'diaria',
     }, {
         idTarea: 4,
-        titulo: 'Pasar IT',
+        titulo: 'Limpieza',
         prioridad: 'diaria',
     },
     {
         idTarea: 4,
-        titulo: 'Pasar IT',
+        titulo: 'Sacar perro',
         prioridad: 'diaria',
     }, {
         idTarea: 4,
-        titulo: 'Pasar IT',
-        prioridad: 'diaria',
+        titulo: 'Limpieza',
+        prioridad: 'mensual',
     },
 
 

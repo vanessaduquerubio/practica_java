@@ -6,10 +6,13 @@ const sectionTareas = document.querySelector('#tareas')
 const addTitulo = document.querySelector('#floatingInputGrid')
 const addPrioridad = document.querySelector('#floatingSelectGrid')
 const addButton = document.querySelector('#buttonadd')
-const searchPrioridad = document.querySelector('.buscar #floatingSelectGrid')
-const searchTarea = document.querySelector('.buscar #floatingInputGrid')
+const searchPrioridad = document.querySelector('#floatingSelectGrid2')
+const searchTarea = document.querySelector('#floatingInputGrid2')
+const buttonSearch = document.querySelector('#buttonbuscar')
 console.log(searchTarea.value)
-console.log(searchPrioridad)
+console.log(searchPrioridad.value)
+console.log(buttonSearch.value)
+console.log(addButton)
 
 
 //funcion que pinte una tarea en el dom
@@ -79,12 +82,24 @@ function addTarea(event) {
 
 //inicio Buscar tareas dinamicamente
 // funcion de filtro de prioridad
-function filterByPrioridad(pList, pPrioridad) {
+
+function filterByPrioridad(pList, pPrioridad, pNombre) {
     pList.forEach(tarea => {
-        if (tarea.prioridad === pPrioridad) {
+        if (tarea.prioridad === pPrioridad && tarea.titulo.toLowerCase() === pNombre.toLowerCase()) {
             printOneTarea(tarea, sectionTareas)
+            /*   } else if (tarea.titulo.toLowerCase() === pNombre.toLowerCase()) {
+                  printOneTarea(tarea, sectionTareas)
+              } else {
+                  /*    alert('No hay ninguna tarea con esas características') */
         }
     })
 }
-filterByPrioridad(tareas, searchPrioridad.value)
 
+
+
+
+// funcion que al presionar enter filtre las tareas
+buttonSearch.onclick = sendSearch;
+function sendSearch() {
+    filterByPrioridad(tareas, searchPrioridad.value, searchTarea.value)
+}
