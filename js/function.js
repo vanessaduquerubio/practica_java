@@ -6,9 +6,9 @@ const sectionTareas = document.querySelector('#tareas')
 const addTitulo = document.querySelector('#floatingInputGrid')
 const addPrioridad = document.querySelector('#floatingSelectGrid')
 const addButton = document.querySelector('#buttonadd')
-
-
-
+/* const searchTarea = document.querySelector('')
+const searchPrioridad = document.querySelector('')
+ */
 //funcion que pinte una tarea en el dom
 function printOneTarea(pTarea, pDom) {
     const divUrgencia = document.createElement('div');
@@ -32,21 +32,21 @@ function printAllTareas(pList, pDom) {
     pList.forEach(tarea => printOneTarea(tarea, pDom));
 }
 
-printAllTareas(tareas, sectionTareas);
+/* printAllTareas(tareas, sectionTareas); */
 
 //fin printTareas
 
 function comprobarForm(pForm) {
     return pForm.addTitulo.value !== "" && pForm.addPrioridad.value !== ""
 }
-console.log('comprobar form', comprobarForm)
 
 // guardar newTarea en tareas
 function saveTarea(pLista, pTarea) {
     pLista.push(pTarea)
     return 'usuario guardado'
 }
-console.log(tareas)
+
+
 // evento que pinta las nuevas tareas
 addButton.onclick = addTarea;
 let i = 1;
@@ -67,7 +67,16 @@ function addTarea(event) {
             alert('los campos no pueden estar vacios')
         }
 
-
     }
 }
+
+// funcion de filtro de prioridad
+function filterByPrioridad(pList, pPrioridad) {
+    pList.forEach(tarea => {
+        if (tarea.prioridad === pPrioridad) {
+            printOneTarea(tarea, sectionTareas)
+        }
+    })
+}
+filterByPrioridad(tareas, 'mensual')
 
