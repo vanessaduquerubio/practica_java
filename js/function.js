@@ -6,9 +6,12 @@ const sectionTareas = document.querySelector('#tareas')
 const addTitulo = document.querySelector('#floatingInputGrid')
 const addPrioridad = document.querySelector('#floatingSelectGrid')
 const addButton = document.querySelector('#buttonadd')
-/* const searchTarea = document.querySelector('')
-const searchPrioridad = document.querySelector('')
- */
+const searchPrioridad = document.querySelector('.buscar #floatingSelectGrid')
+const searchTarea = document.querySelector('.buscar #floatingInputGrid')
+console.log(searchTarea.value)
+console.log(searchPrioridad)
+
+
 //funcion que pinte una tarea en el dom
 function printOneTarea(pTarea, pDom) {
     const divUrgencia = document.createElement('div');
@@ -36,6 +39,8 @@ function printAllTareas(pList, pDom) {
 
 //fin printTareas
 
+
+//incio pintat tareas dinamicamente
 function comprobarForm(pForm) {
     return pForm.addTitulo.value !== "" && pForm.addPrioridad.value !== ""
 }
@@ -69,7 +74,10 @@ function addTarea(event) {
 
     }
 }
+// fin pintar tareas dinamicamente
 
+
+//inicio Buscar tareas dinamicamente
 // funcion de filtro de prioridad
 function filterByPrioridad(pList, pPrioridad) {
     pList.forEach(tarea => {
@@ -78,5 +86,5 @@ function filterByPrioridad(pList, pPrioridad) {
         }
     })
 }
-filterByPrioridad(tareas, 'mensual')
+filterByPrioridad(tareas, searchPrioridad.value)
 
