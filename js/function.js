@@ -6,7 +6,13 @@ const sectionTareas = document.querySelector('#tareas')
 const addTitulo = document.querySelector('#floatingInputGrid')
 const addPrioridad = document.querySelector('#floatingSelectGrid')
 const addButton = document.querySelector('#buttonadd')
-
+const searchPrioridad = document.querySelector('#floatingSelectGrid2')
+const searchTarea = document.querySelector('#floatingInputGrid2')
+const buttonSearch = document.querySelector('#buttonbuscar')
+console.log(searchTarea.value)
+console.log(searchPrioridad.value)
+console.log(buttonSearch.value)
+console.log(addButton)
 
 
 //funcion que pinte una tarea en el dom
@@ -29,24 +35,30 @@ function printOneTarea(pTarea, pDom) {
 }
 
 function printAllTareas(pList, pDom) {
+    searchPrioridad = '';
+    searchTarea = ''
+    addPrioridad = ''
+    addTarea = ''
     pList.forEach(tarea => printOneTarea(tarea, pDom));
 }
 
-printAllTareas(tareas, sectionTareas);
+/* printAllTareas(tareas, sectionTareas); */
 
 //fin printTareas
 
+
+//incio pintat tareas dinamicamente
 function comprobarForm(pForm) {
     return pForm.addTitulo.value !== "" && pForm.addPrioridad.value !== ""
 }
-console.log('comprobar form', comprobarForm)
 
 // guardar newTarea en tareas
 function saveTarea(pLista, pTarea) {
     pLista.push(pTarea)
     return 'usuario guardado'
 }
-console.log(tareas)
+
+
 // evento que pinta las nuevas tareas
 addButton.onclick = addTarea;
 let i = 1;
@@ -67,7 +79,42 @@ function addTarea(event) {
             alert('los campos no pueden estar vacios')
         }
 
-
     }
 }
+// fin pintar tareas dinamicamente
 
+
+//inicio Buscar tareas dinamicamente
+// funcion de filtro de prioridad
+
+function filterByPrioridad(pList, pPrioridad) {
+    pList.forEach(tarea => {
+        if (tarea.prioridad === pPrioridad) {
+            printOneTarea(tarea, sectionTareas)
+        }
+    })
+}
+function filterByName(pList, pNombre) {
+    pList.forEach(tarea => {
+        if (tarea.titulo.toLowerCase() === pNombre.toLowerCase()) {
+            printOneTarea(tarea, sectionTareas)
+        }
+    })
+}
+
+
+
+
+// eventos de busqueda
+
+function changeSearch() {
+    filterByPrioridad(tareas, searchPrioridad.value)
+    searchPrioridad.value = ''
+}
+searchPrioridad.onclick = changeSearch;
+
+function sendSearch() {
+    filterByName(tareas, searchTarea.value)
+    searchTarea.value = ''
+}
+buttonSearch.onclick = sendSearch;
