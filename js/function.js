@@ -9,10 +9,29 @@ const addButton = document.querySelector('#buttonadd')
 const searchPrioridad = document.querySelector('#floatingSelectGrid2')
 const searchTarea = document.querySelector('#floatingInputGrid2')
 const buttonSearch = document.querySelector('#buttonbuscar')
+const deleteOneTarea = document.querySelector('btn-outline-light')
 console.log(searchTarea.value)
 console.log(searchPrioridad.value)
 console.log(buttonSearch.value)
 console.log(addButton)
+
+
+//funciones borrar
+function deleteItemArray(pList, pId) {
+    let posicionBorrar = pList.findIndex(item => item.id === pId)
+    if (posicionBorrar !== -1) {
+        pList.splice(posicionBorrar, 1)
+    }
+}
+
+function deleteItem(event) {
+    event.preventDefault()
+    let id = parseInt(event.target.dataset.id)
+    const tareaDelente = event.target.parentNode.parentNode
+    tareaDelente.parentNode.removeChild(tareaDelente)
+    deleteItemArray(tarea, id)
+}
+// fin funciones borrar
 
 
 //funcion que pinte una tarea en el dom
@@ -27,6 +46,7 @@ function printOneTarea(pTarea, pDom) {
     const button = document.createElement('button')
     button.classList.add('btn')
     button.classList.add('btn-outline-light')
+    button.addEventListener('click', deleteItem)
     button.textContent = `Eliminar`
     divPintado.append(p, button)
     divUrgencia.append(divPintado)
@@ -35,86 +55,84 @@ function printOneTarea(pTarea, pDom) {
 }
 
 function printAllTareas(pList, pDom) {
-    searchPrioridad = '';
-    searchTarea = ''
-    addPrioridad = ''
-    addTarea = ''
+    pDom, innerHTML = "";
     pList.forEach(tarea => printOneTarea(tarea, pDom));
 }
 
-/* printAllTareas(tareas, sectionTareas); */
 
 //fin printTareas
 
 
-//incio pintat tareas dinamicamente
+
+
+//ncio pintat tareas dinamicamente
 function comprobarForm(pForm) {
     return pForm.addTitulo.value !== "" && pForm.addPrioridad.value !== ""
 }
 
 // guardar newTarea en tareas
 function saveTarea(pLista, pTarea) {
-    pLista.push(pTarea)
-    return 'usuario guardado'
-}
+    let duplicado = pLista.findIndex(tarea => tarea.titulo === '')
+    if (duplicado === -1) {
+        pLista.push(pTarea)
+        return 'usuario guardado'
+    } else {
+        alert('tarea repetida')
+    }
 
+}
 
 // evento que pinta las nuevas tareas
-addButton.onclick = addTarea;
+
 let i = 1;
 function addTarea(event) {
-    {
-        const newTarea = {
-            idTarea: i++,
-            titulo: addTitulo.value,
-            prioridad: addPrioridad.value
-        }
-
-        let guardado = saveTarea(tareas, newTarea)
-        if (guardado === 'usuario guardado') {
-            addTitulo.value = ""
-            addPrioridad.value = ""
-            printOneTarea(newTarea, sectionTareas)
-        } else {
-            alert('los campos no pueden estar vacios')
-        }
-
+    event.preventDefault();
+    const newTarea = {
+        idTarea: i++,
+        titulo: addTitulo.value,
+        prioridad: addPrioridad.value
     }
+    let guardado = saveTarea(tareas, newTarea)
+    if (guardado === 'usuario guardado') {
+        addTitulo.value = ""
+        addPrioridad.value = ""
+        printOneTarea(newTarea, sectionTareas)
+    }
+
 }
+addButton.onclick = addTarea;
 // fin pintar tareas dinamicamente
 
 
 //inicio Buscar tareas dinamicamente
-// funcion de filtro de prioridad
-
+//inicio filtrar por categoria
 function filterByPrioridad(pList, pPrioridad) {
-    pList.forEach(tarea => {
-        if (tarea.prioridad === pPrioridad) {
-            printOneTarea(tarea, sectionTareas)
-        }
-    })
+    return pList.filter(tarea => tarea.prioridad.toLowerCase() === pPrioridad)
 }
+
+function changePrioridad() {
+    let prioridad = searchPrioridad.value.toLowerCase();
+    const filterPrioridad = filterByPrioridad(tareas, prioridad);
+    printAllTareas(filterPrioridad, sectionTareas);
+
+}
+
+searchPrioridad.addEventListener('change', changePrioridad);
+
+// funcion buscar por nombre
+
 function filterByName(pList, pNombre) {
-    pList.forEach(tarea => {
-        if (tarea.titulo.toLowerCase() === pNombre.toLowerCase()) {
-            printOneTarea(tarea, sectionTareas)
+    const filterList = []
+    for (let tarea of pList)
+        if (tarea.titulo.toLowerCase().includes(pNombre.toLowerCase())) {
+            filterList[filterList.length] = tarea;
+            printAllTareas(filterList, sectionTareas)
         }
-    })
 }
 
-
-
-
-// eventos de busqueda
-
-function changeSearch() {
-    filterByPrioridad(tareas, searchPrioridad.value)
-    searchPrioridad.value = ''
-}
-searchPrioridad.onclick = changeSearch;
 
 function sendSearch() {
-    filterByName(tareas, searchTarea.value)
-    searchTarea.value = ''
+    filterByName(tareas, searchTarea.value.toLowerCase())
+
 }
-buttonSearch.onclick = sendSearch;
+buttonSearch.addEventListener('click', sendSearch)

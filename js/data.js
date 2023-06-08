@@ -17,6 +17,14 @@ const tareas = [
         titulo: 'Bailar',
         prioridad: 'urgente',
     }, {
+        idTarea: 3,
+        titulo: 'Bailar',
+        prioridad: 'diaria',
+    }, {
+        idTarea: 3,
+        titulo: 'Bailar',
+        prioridad: 'mensual',
+    }, {
         idTarea: 4,
         titulo: 'Pasar IT',
         prioridad: 'diaria',
