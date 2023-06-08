@@ -9,7 +9,7 @@ const addButton = document.querySelector('#buttonadd')
 const searchPrioridad = document.querySelector('#floatingSelectGrid2')
 const searchTarea = document.querySelector('#floatingInputGrid2')
 const buttonSearch = document.querySelector('#buttonbuscar')
-const deleteOneTarea = document.querySelector('btn-outline-light')
+const deleteOneTarea = document.querySelector('btn btn-light')
 console.log(searchTarea.value)
 console.log(searchPrioridad.value)
 console.log(buttonSearch.value)
@@ -66,13 +66,11 @@ function printAllTareas(pList, pDom) {
 
 
 //ncio pintat tareas dinamicamente
-function comprobarForm(pForm) {
-    return pForm.addTitulo.value !== "" && pForm.addPrioridad.value !== ""
-}
+
 
 // guardar newTarea en tareas
 function saveTarea(pLista, pTarea) {
-    let duplicado = pLista.findIndex(tarea => tarea.titulo === '')
+    let duplicado = pLista.findIndex(tarea => tarea.titulo.toLowerCase() === '')
     if (duplicado === -1) {
         pLista.push(pTarea)
         return 'usuario guardado'
@@ -81,6 +79,7 @@ function saveTarea(pLista, pTarea) {
     }
 
 }
+
 
 // evento que pinta las nuevas tareas
 
