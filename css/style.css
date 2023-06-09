@@ -34,20 +34,21 @@ body {
 }
 
 .card-body {
+    border-radius: 20px;
     display: flex;
     justify-content: space-between;
 }
 
 .urgente {
-    background-color: rgba(249, 117, 117, 0.649)
+    background-color: dodgerblue;
 }
 
 .diaria {
-    background-color: #7af5d0bc;
+    background-color: #50fecabc;
 }
 
 .mensual {
-    background-color: #bf9cf6c5;
+    background-color: #9f6eeec5;
 }
 
 /* fin tareas */
@@ -97,6 +98,15 @@ body {
 
 }
 
+footer {
+    padding: 15px 10px;
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: whitesmoke;
+
+}
 
 
 
