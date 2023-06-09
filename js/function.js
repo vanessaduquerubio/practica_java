@@ -55,7 +55,7 @@ function printOneTarea(pTarea, pDom) {
 }
 
 function printAllTareas(pList, pDom) {
-    pDom, innerHTML = "";
+    pDom.innerHTML = "";
     pList.forEach(tarea => printOneTarea(tarea, pDom));
 }
 
