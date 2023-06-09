@@ -13,6 +13,109 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="./images/d585b6e855185a9e862151a62efedf1b.jpg" alt="Logo" width="30" height="24"
+                        class="d-inline-block align-text-top">
+                    <span>TODO's</span> <small> ©vanessa</small>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+
+            <div class="añadir">
+                <div class="row g-3">
+                    <div class="uno col-md">
+                        <div class="form-floating" id="add">
+                            <input type="text" class="form-control" id="floatingInputGrid"
+                                placeholder="Introduce una tarea" value="">
+                            >
+                            <label for="floatingSelectGrid">Introduce una tarea
+                            </label>
+                        </div>
+                    </div>
+                    <div class="uno col-md">
+                        <div class="form-floating">
+                            <select class="form-select" id="floatingSelectGrid">
+                                <option selected></option>
+                                <option value="urgente">
+                                    URGENTE</option>
+                                <option value="diaria">Diaria</option>
+                                <option value="mensual">Mensual</option>
+                            </select>
+                            <label for="floatingSelectGrid">Selecciona una</label>
+
+                        </div>
+                    </div>
+                    <div class="dos col-12 ">
+                        <div class="form-floating ">
+                            <div class="d-grid mx-auto btn">
+                                <button id=buttonadd type="button" class="btn btn-secondary btn-lg">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <hr class="border border-dark border-2 opacity-50">
+            <div class="buscar">
+                <div class="iniciobuscar">Buscador</div>
+                <div id="buscador" class="row g-3">
+                    <div class="uno col-md">
+                        <div class="form-floating">
+                            <select class="form-select" id="floatingSelectGrid2">
+                                <option selected></option>
+                                <option value="urgente">URGENTE</option>
+                                <option value="diaria">Diaria</option>
+                                <option value="mensual">Mensual</option>
+                            </select>
+                            <label for="floatingSelectGrid">Selecciona una</label>
+                        </div>
+                    </div>
+                    <div class="uno col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGrid2"
+                                placeholder="Introduce una tarea" value="">
+                            <label for="floatingInputGrid">Buscar tarea</label>
+                        </div>
+                    </div>
+
+                    <div class="dos col-12 ">
+                        <div class="form-floating ">
+                            <div class="d-grid mx-auto btn">
+                                <button id=buttonbuscar type="button" class="btn btn-secondary btn-lg">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <ul class="leyenda">
+                <li class="urgente">URGENTE</li>
+                <li class="diaria">Diaria</li>
+                <li class="mensual">mensual</li>
+            </ul>
+
+
+            <section id="tareas">
+            </section>
+
+
+
+
+        </div>
+    </main>
+    <footer>
+        <div>
+            <small> ©CopyRight</small>
+        </div>
+
+    </footer>
+
 
 
     <script src="js/function.js"></script>

@@ -1,1 +1,134 @@
 /* modificacion de estilos de bootstrap */
+
+/* inicio  fondos */
+body {
+    background-image: url(../images/fondo-app-L-qWeW4B.jpeg);
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.719);
+    height: 100vh;
+}
+
+main {
+    height: 95vh;
+}
+
+
+
+/* fin fondos */
+/* añadir */
+.añadir {
+    margin-top: 20px;
+}
+
+/* fin añadir */
+
+/* inicio busqueda */
+.buscar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* fin busqueda */
+
+/* inicio tareas */
+.card {
+    margin: 4px auto;
+
+}
+
+
+.card-body {
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    transition: 2s;
+}
+
+.urgente {
+    background-color: dodgerblue;
+}
+
+.diaria {
+    background-color: #50fecabc;
+}
+
+.mensual {
+    background-color: #9f6eeec5;
+}
+
+/* fin tareas */
+
+
+/* introduce una tarea modificacion */
+#add label {
+    font-size: 0.9rem;
+    margin-top: -7px;
+    color: gray;
+    transform: none;
+}
+
+#buscador label {
+    font-size: 0.9rem;
+    margin-top: -8px;
+    color: gray;
+    transform: none;
+}
+
+/* fin modificacion */
+/* inicio buscador */
+.iniciobuscar {
+    width: 15%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.825);
+    color: gray;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* fun buscador */
+/* inicio leyenda */
+.leyenda {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -15px;
+    margin-left: -30px;
+}
+
+.leyenda li {
+    width: 33.333%;
+    list-style: none;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+
+}
+
+footer {
+    height: 5vh;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+h2 {
+    margin: 0 auto;
+    text-align: center;
+
+
+}
+
+
+
+/* inicio media */
+@media(min-width:1004px) {
+    .uno {
+        width: 40%;
+    }
+
+    .dos {
+        width: 20%
+    }
+}
