@@ -10,6 +10,7 @@ const searchPrioridad = document.querySelector('#floatingSelectGrid2')
 const searchTarea = document.querySelector('#floatingInputGrid2')
 const buttonSearch = document.querySelector('#buttonbuscar')
 const deleteOneTarea = document.querySelector('btn btn-light')
+const cardTarea = document.querySelector('card-body')
 console.log(searchTarea.value)
 console.log(searchPrioridad.value)
 console.log(buttonSearch.value)
@@ -18,18 +19,25 @@ console.log(addButton)
 
 //funciones borrar
 function deleteItemArray(pList, pId) {
+
     let posicionBorrar = pList.findIndex(item => item.id === pId)
     if (posicionBorrar !== -1) {
         pList.splice(posicionBorrar, 1)
     }
+
+
 }
 
-function deleteItem(event) {
+function deleteItem(event, pList) {
     event.preventDefault()
     let id = parseInt(event.target.dataset.id)
     const tareaDelente = event.target.parentNode.parentNode
     tareaDelente.parentNode.removeChild(tareaDelente)
     deleteItemArray(tarea, id)
+    if (pList.length === 0) {
+        pDom.innerHTML = '<h2> no hay tareas pendientes</h2>'
+    }
+
 }
 // fin funciones borrar
 
@@ -56,8 +64,16 @@ function printOneTarea(pTarea, pDom) {
 
 function printAllTareas(pList, pDom) {
     pDom.innerHTML = "";
-    pList.forEach(tarea => printOneTarea(tarea, pDom));
+    pDom.innerText = '';
+    if (pList.length !== 0) {
+        pList.forEach(tarea => printOneTarea(tarea, pDom));
+    } else {
+        pDom.innerHTML = '<h2>No hay tareas pendientes</h2>'
+    }
+
+
 }
+printAllTareas(tareas, sectionTareas)
 
 
 //fin printTareas
@@ -106,7 +122,9 @@ addButton.onclick = addTarea;
 //inicio Buscar tareas dinamicamente
 //inicio filtrar por categoria
 function filterByPrioridad(pList, pPrioridad) {
+
     return pList.filter(tarea => tarea.prioridad.toLowerCase() === pPrioridad)
+
 }
 
 function changePrioridad() {
@@ -126,6 +144,9 @@ function filterByName(pList, pNombre) {
         if (tarea.titulo.toLowerCase().includes(pNombre.toLowerCase())) {
             filterList[filterList.length] = tarea;
             printAllTareas(filterList, sectionTareas)
+            if (pList.length === 0) {
+                pDom.innerHTML = "<h2> tareas completadas</h2>"
+            }
         }
 }
 
